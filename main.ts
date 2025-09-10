@@ -236,43 +236,26 @@ function animateIdle () {
     mainIdleLeft = animation.createAnimation(ActionKind.Walking, 100)
     animation.attachAnimation(hero, mainIdleLeft)
     mainIdleLeft.addAnimationFrame(img`
-        . . . . . . . . . . . . . . . . 
-        . . . f f f f f f f f f f . . . 
-        . . f e e e e e e e e e e f . . 
-        . f e e e e e e e e e e e e f . 
-        . f d d d d d d d d d e e d f . 
-        . f d d f d d d d f d d e d f . 
-        . f d d f d d d d f d d d e f . 
-        . f d d f d d d d f d d d f . . 
-        . f d d d d d d d d d d d f . . 
-        . f a c c c c c c c c a b f . . 
-        . f d d c c c c c c d d d f . . 
-        . f d f f f b b f f f d d f . . 
-        . . f a a a a a a a a a b f . . 
-        . . . f a a b f f a a b f . . . 
-        . . . f a a b f f a a b f . . . 
-        . . . . f f f . . f f f . . . . 
+        . . . b 5 b . . . . . . . . . . 
+        . . . . b 5 b . . . . . . . . . 
+        . . . . . c b . . . . . . . . . 
+        . . . . b b b b b b . . . . . . 
+        . . . b 5 5 5 5 5 b b . . . . . 
+        . . f d 5 5 f 1 d 5 b b . . . . 
+        . . c 4 d 5 f f 1 5 5 b . . . . 
+        . . 4 4 d d b f d 5 5 b . . . . 
+        b 4 4 4 4 4 5 5 5 d b b d d d b 
+        . b 4 4 4 4 4 5 5 b 5 5 5 d b b 
+        . . b 5 5 5 5 5 d 5 5 5 5 c d b 
+        . b 5 5 5 5 5 5 b 5 5 d c d d c 
+        . b 5 5 5 5 5 5 5 b c c d d b c 
+        . b d 5 5 5 5 5 d d d d d d c . 
+        . . b b 5 5 5 d d d d d b c . . 
+        . . . b b c c c c c c c c . . . 
         `)
     mainIdleRight = animation.createAnimation(ActionKind.Walking, 100)
     animation.attachAnimation(hero, mainIdleRight)
-    mainIdleRight.addAnimationFrame(img`
-        . . . . . . . . . . . . . . . . 
-        . . . f f f f f f f f f f . . . 
-        . . f e e e e e e e e e e f . . 
-        . f e e e e e e e e e e e e f . 
-        . f d e e d d d d d d d d d f . 
-        . f d e d d f d d d d f d d f . 
-        . f e d d d f d d d d f d d f . 
-        . . f d d d f d d d d f d d f . 
-        . . f d d d d d d d d d d d f . 
-        . . f b a c c c c c c c c a f . 
-        . . f d d d c c c c c c d d f . 
-        . . f d d f f f b b f f f d f . 
-        . . f b a a a a a a a a a f . . 
-        . . . f b a a f f b a a f . . . 
-        . . . f b a a f f b a a f . . . 
-        . . . . f f f . . f f f . . . . 
-        `)
+    mainIdleRight.addAnimationFrame(assets.image`patano`)
 }
 function setLevelTileMap (level: number) {
     clearGame()
@@ -531,7 +514,7 @@ function animateJumps () {
     // Because there isn't currently an easy way to say "play this animation a single time
     // and stop at the end", this just adds a bunch of the same frame at the end to accomplish
     // the same behavior
-    mainJumpLeft = animation.createAnimation(ActionKind.Walking, 100)
+    mainJumpLeft = animation.createAnimation(ActionKind.Walking, 200)
     animation.attachAnimation(hero, mainJumpLeft)
     mainJumpLeft.addAnimationFrame(assets.image`patano agachado0`)
     mainJumpLeft.addAnimationFrame(img`
@@ -552,6 +535,7 @@ function animateJumps () {
         . . b b 5 5 5 d d d d d b c . . 
         . . . b b c c c c c c c c . . . 
         `)
+    mainJumpLeft.addAnimationFrame(assets.image`patano agachado0`)
     for (let index = 0; index < 30; index++) {
         mainJumpLeft.addAnimationFrame(img`
             . . . b 5 b . . . . . . . . . . 
@@ -572,7 +556,7 @@ function animateJumps () {
             . . . b b c c c c c c c c . . . 
             `)
     }
-    mainJumpRight = animation.createAnimation(ActionKind.Walking, 100)
+    mainJumpRight = animation.createAnimation(ActionKind.Walking, 200)
     animation.attachAnimation(hero, mainJumpRight)
     mainJumpRight.addAnimationFrame(assets.image`patano agachado`)
     mainJumpRight.addAnimationFrame(img`
@@ -593,25 +577,9 @@ function animateJumps () {
         . . c b d d d d d 5 5 5 b b . . 
         . . . c c c c c c c c b b . . . 
         `)
+    mainJumpRight.addAnimationFrame(assets.image`patano agachado`)
     for (let index = 0; index < 30; index++) {
-        mainJumpRight.addAnimationFrame(img`
-            . . . . . . . . . . b 5 b . . . 
-            . . . . . . . . . b 5 b . . . . 
-            . . . . . . b b b b b b . . . . 
-            . . . . . b b 5 5 5 5 5 b . . . 
-            . . . . b b 5 d 1 f 5 d 4 c . . 
-            . . . . b 5 5 1 f f d d 4 4 4 b 
-            . . . . b 5 5 d f b 4 4 4 4 b . 
-            . . . b d 5 5 5 5 4 4 4 4 b . . 
-            . b b d d d 5 5 5 5 5 5 5 b . . 
-            b d d d b b b 5 5 5 5 5 5 5 b . 
-            c d d b 5 5 d c 5 5 5 5 5 5 b . 
-            c b b d 5 d c d 5 5 5 5 5 5 b . 
-            c b 5 5 b c d d 5 5 5 5 5 5 b . 
-            b b c c c d d d 5 5 5 5 5 d b . 
-            . . . . c c d d d 5 5 5 b b . . 
-            . . . . . . c c c c c b b . . . 
-            `)
+        mainJumpRight.addAnimationFrame(assets.image`patano`)
     }
 }
 function animateCrouch () {
@@ -665,7 +633,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`tile1`, function (sprite, loc
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Flier, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
-    sprite.say("Ow!", invincibilityPeriod * 1.5)
+    sprite.say("Quack!", invincibilityPeriod * 1.5)
     music.powerDown.play()
     pause(invincibilityPeriod * 1.5)
 })
